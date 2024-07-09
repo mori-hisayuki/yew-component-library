@@ -7,14 +7,10 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     pkg-config \
     clang \
-    llvm \
     && rm -rf /var/lib/apt/lists/*
 
-# 必要なコンポーネントをインストール
-RUN rustup update \
-    && rustup component add rustfmt clippy
+# cargo-binutilsをインストール
+RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
-# wasm-packをインストール
-RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-
-WORKDIR /develop
+# trunkをインストール
+RUN cargo binstall trunk -y
