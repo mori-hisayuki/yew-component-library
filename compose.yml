@@ -16,3 +16,15 @@ services:
     working_dir: /develop
     volumes:
       - .:/develop
+  trunk:
+    build:
+      context: .
+      dockerfile: ./docker/trunk/Dockerfile
+    working_dir: /develop
+    volumes:
+      - .:/develop
+    ports:
+      - "8080:8080"
+    command: /bin/bash -c "trunk serve"
+    stdin_open: true
+    tty: true
