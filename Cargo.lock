@@ -1145,5 +1145,6 @@ dependencies = [
 name = "yew_component_library"
 version = "0.1.0"
 dependencies = [
+ "wasm-bindgen",
  "yew",
 ]
