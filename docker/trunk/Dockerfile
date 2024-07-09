@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y \
     clang \
     && rm -rf /var/lib/apt/lists/*
 
+# 必要なコンポーネントをインストール
+RUN rustup update \
+    && rustup target add wasm32-unknown-unknown
+
 # cargo-binutilsをインストール
 RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
