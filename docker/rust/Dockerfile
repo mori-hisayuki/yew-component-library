@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 # 必要なコンポーネントをインストール
 RUN rustup update \
-    && rustup component add rustfmt clippy
+    && rustup component add rustfmt clippy \
+    && rustup target add wasm32-unknown-unknown
 
 # wasm-packをインストール
 RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
